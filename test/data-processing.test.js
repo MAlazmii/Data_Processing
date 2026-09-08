@@ -87,3 +87,8 @@ test('export escapes quotes and commas', () => {
         assert.equal(fs.readFileSync(output, 'utf8'), 'title,first_name,middle_name,surname,date_of_birth,age,email\nMr,Jane,"""Jj"" Doe,",Jr,29/02/2000,24,jane@example.com\n');
     } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
 });
+
+test('surname statistics handle names matching object properties', () => {
+    const data = clean('Jane Constructor,1/1/2000,24,jane@example.com');
+    assert.deepEqual(data.most_common_surname(), ['Constructor']);
+});

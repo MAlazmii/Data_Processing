@@ -155,7 +155,7 @@ class Data_Processing {
 
     //find the most common surname(s) in the cleaned user data
     most_common_surname() {
-        const surnameCounts = {}; // Object to hold surname counts
+        const surnameCounts = Object.create(null); // Object to hold surname counts
 
         // Iterate over each user in the cleaned data
         this.cleaned_user_data.forEach(user => {
